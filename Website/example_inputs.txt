@@ -1,0 +1,2 @@
+high_fever, cough, continuous_sneezing
+itching, red_spots_over_body, mild_fever

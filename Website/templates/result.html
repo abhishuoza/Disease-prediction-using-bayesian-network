@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Results</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../static/css/styles.css">
+</head>
+<style>
+	body{
+	   /* background-image: url('assets/doctor.jpg'); */
+	   background-image: none;
+	}
+	table, th, td {
+	  border:2.5px solid black;
+	}
+	</style>
+
+
+	<header>
+		
+		<div class='text-center' style="font-size: 30px;font-family: 'Courier New', Courier, monospace;">
+			Your Report
+		</div>
+	</header>
+	<!-- <div class="results">	
+	<p>Patient Name : {{Name}}</p>
+	<p>Patient Age : {{Age}}</p>	
+	<p>Patient Gender : {{Gender}}</p>		
+	<p>here are your symptoms : {{Symptoms}}</p>
+	</div> -->
+
+
+	<div class="text-center">
+		<table style="width: 80%; border:1px solid black;margin-left:auto;margin-right:auto;">
+			<tr>
+			  <td>Name</td>
+			  <td>Age</td>
+			  <td>Gender</td>
+			  <td>Symptoms</td>
+			  <td>Disease</td>
+			</tr>
+			<tr>
+				<td>{{Name}}</td>
+				<td>{{Age}}</td>
+				<td>{{Gender}}</td>
+				<td>{{Symptoms}}</td>
+				<td>{{Predicted_disease}}</td>
+			  </tr>
+		</table>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home</title>
+	<!-- <link rel="stylesheet" type="text/css" href="../static/css/styles.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}"> -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> 
+</head>
+  
+<body style="background-color:white;">
+	<header>
+		<div class="container">
+		<h2 class="text-center">Disease predictor</h2>
+	</div>
+	</header>
+	<div style="margin-left: 10px; margin-right: 10px;">
+		
+	<form action="{{ url_for('predict')}}" method="POST">
+	
+		<div class="center">
+		<div class="form-group">
+			<label>Enter your Name</label>
+			<input type="text" name=Name class="form-control" id="Name" placeholder="Enter Name">
+		</div>
+		<div class="form-group">
+			<label>Enter your Age</label>
+			<input type="text" name=Age class="form-control" id="Age" placeholder="Enter Age">
+		</div>
+		<div class="form-group">
+			<label>Enter your Gender</label>
+			<input type="text" name="Gender" class="form-control" id="Gender" placeholder="Enter Gender">
+		</div>
+		<p><b>Enter Your Symptoms<p></b>
+			<p><b>Possible Symptoms:</b> abdominal_pain,acidity,bladder_discomfort,blood_in_sputum,blurred_and_distorted_vision,breathlessness,burning_micturition,chest_pain,chills,congestion,continuous_feel_of_urine,<br>continuous_sneezing,cough,dark_urine,dehydration,depression,diarrhoea,dischromic_patches,excessive_hunger,fast_heart_rate,fatigue,foul_smell_of_urine,headache,high_fever,indigestion,irritability,<br>itching,lethargy,loss_of_appetite,loss_of_smell,malaise,mild_fever,muscle_pain,muscle_weakness,nausea,nodal_skin_eruptions,phlegm,red_spots_over_body,redness_of_eyes,runny_nose,rusty_sputum,<br>shivering,sinus_pressure,skin_rash,stiff_neck,sunken_eyes,sweating,swelled_lymph_nodes,throat_irritation,visual_disturbances,vomiting,weakness_in_limbs,weight_loss,yellowing_of_eyes,yellowish_skin
+			</p>
+			<p><b>Possible Diseases:</b> Malaria,Dengue,Urinary tract infection,Fungal infection,Gastroenteritis,Heart attack,Migraine,Tuberculosis,Chicken pox,Chronic cholestasis,Jaundice,Pneumonia,Common Cold
+			</p>
+			<textarea name=Symptoms rows="4" , cols="100" placeholder="Enter your symptoms in comma seperated form. Eg: fever,cough,cold,etc..."></textarea>
+		<br/>
+		</div class='center'>
+		<input type="submit" class="btn btn-success" value="predict" style="">
+		</form>
+		</div>
+
+</body>
+</html>
