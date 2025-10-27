@@ -2,6 +2,7 @@ services:
   - type: web
     name: disease-predictor
     env: python
+    plan: free
     region: oregon
     buildCommand: pip install -r requirements.txt
     startCommand: cd Website && gunicorn app:app

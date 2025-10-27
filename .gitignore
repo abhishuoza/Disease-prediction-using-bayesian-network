@@ -31,8 +31,7 @@ Thumbs.db
 .env
 .env.local
 
-# Deployment (optional - uncomment if you don't want to track these)
-# DEPLOYMENT.md
+# Deployment
 # render.yaml
 
 # Logs
