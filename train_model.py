@@ -138,20 +138,16 @@ def train_and_save_model():
 
     print("Model validation:", model.check_model())
 
-    print("Creating inference engine...")
-    all_nodes = model.nodes()
-    WeightedMinFill(model).get_elimination_order(all_nodes)
-    inference = VariableElimination(model)
-
     print("Loading disease list...")
     diseases_df = pd.read_csv('Diseases.csv')
     diseases_list = list(diseases_df.columns)
 
     # Save the trained model and related data
+    # Note: We only save the model, not the inference engine
+    # The inference engine will be created fresh when loading
     print("Saving trained model to file...")
     model_data = {
         'model': model,
-        'inference': inference,
         'diseases_list': diseases_list
     }
 

@@ -30,12 +30,64 @@
 			<label>Enter your Gender</label>
 			<input type="text" name="Gender" class="form-control" id="Gender" placeholder="Enter Gender">
 		</div>
-		<p><b>Enter Your Symptoms<p></b>
-			<p><b>Possible Symptoms:</b> abdominal_pain,acidity,bladder_discomfort,blood_in_sputum,blurred_and_distorted_vision,breathlessness,burning_micturition,chest_pain,chills,congestion,continuous_feel_of_urine,<br>continuous_sneezing,cough,dark_urine,dehydration,depression,diarrhoea,dischromic_patches,excessive_hunger,fast_heart_rate,fatigue,foul_smell_of_urine,headache,high_fever,indigestion,irritability,<br>itching,lethargy,loss_of_appetite,loss_of_smell,malaise,mild_fever,muscle_pain,muscle_weakness,nausea,nodal_skin_eruptions,phlegm,red_spots_over_body,redness_of_eyes,runny_nose,rusty_sputum,<br>shivering,sinus_pressure,skin_rash,stiff_neck,sunken_eyes,sweating,swelled_lymph_nodes,throat_irritation,visual_disturbances,vomiting,weakness_in_limbs,weight_loss,yellowing_of_eyes,yellowish_skin
-			</p>
-			<p><b>Possible Diseases:</b> Malaria,Dengue,Urinary tract infection,Fungal infection,Gastroenteritis,Heart attack,Migraine,Tuberculosis,Chicken pox,Chronic cholestasis,Jaundice,Pneumonia,Common Cold
-			</p>
-			<textarea name=Symptoms rows="4" , cols="100" placeholder="Enter your symptoms in comma seperated form. Eg: fever,cough,cold,etc..."></textarea>
+		<p><b>Select Your Symptoms</b> <span style="font-size: 12px; color: #666;">(Select all that apply)</span></p>
+			<div style="max-height: 400px; overflow-y: auto; border: 1px solid #ddd; padding: 15px; border-radius: 5px; background-color: #f9f9f9;">
+				<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+					<div><label style="font-weight: normal;"><input type="checkbox" name="symptoms" value="itching"> Itching</label></div>
+					<div><label style="font-weight: normal;"><input type="checkbox" name="symptoms" value="skin_rash"> Skin Rash</label></div>
+					<div><label style="font-weight: normal;"><input type="checkbox" name="symptoms" value="nodal_skin_eruptions"> Nodal Skin Eruptions</label></div>
+					<div><label style="font-weight: normal;"><input type="checkbox" name="symptoms" value="continuous_sneezing"> Continuous Sneezing</label></div>
+					<div><label style="font-weight: normal;"><input type="checkbox" name="symptoms" value="chills"> Chills</label></div>
+					<div><label style="font-weight: normal;"><input type="checkbox" name="symptoms" value="acidity"> Acidity</label></div>
+					<div><label style="font-weight: normal;"><input type="checkbox" name="symptoms" value="vomiting"> Vomiting</label></div>
+					<div><label style="font-weight: normal;"><input type="checkbox" name="symptoms" value="burning_micturition"> Burning Micturition</label></div>
+					<div><label style="font-weight: normal;"><input type="checkbox" name="symptoms" value="fatigue"> Fatigue</label></div>
+					<div><label style="font-weight: normal;"><input type="checkbox" name="symptoms" value="weight_loss"> Weight Loss</label></div>
+					<div><label style="font-weight: normal;"><input type="checkbox" name="symptoms" value="lethargy"> Lethargy</label></div>
+					<div><label style="font-weight: normal;"><input type="checkbox" name="symptoms" value="cough"> Cough</label></div>
+					<div><label style="font-weight: normal;"><input type="checkbox" name="symptoms" value="high_fever"> High Fever</label></div>
+					<div><label style="font-weight: normal;"><input type="checkbox" name="symptoms" value="sunken_eyes"> Sunken Eyes</label></div>
+					<div><label style="font-weight: normal;"><input type="checkbox" name="symptoms" value="breathlessness"> Breathlessness</label></div>
+					<div><label style="font-weight: normal;"><input type="checkbox" name="symptoms" value="sweating"> Sweating</label></div>
+					<div><label style="font-weight: normal;"><input type="checkbox" name="symptoms" value="dehydration"> Dehydration</label></div>
+					<div><label style="font-weight: normal;"><input type="checkbox" name="symptoms" value="indigestion"> Indigestion</label></div>
+					<div><label style="font-weight: normal;"><input type="checkbox" name="symptoms" value="headache"> Headache</label></div>
+					<div><label style="font-weight: normal;"><input type="checkbox" name="symptoms" value="yellowish_skin"> Yellowish Skin</label></div>
+					<div><label style="font-weight: normal;"><input type="checkbox" name="symptoms" value="dark_urine"> Dark Urine</label></div>
+					<div><label style="font-weight: normal;"><input type="checkbox" name="symptoms" value="nausea"> Nausea</label></div>
+					<div><label style="font-weight: normal;"><input type="checkbox" name="symptoms" value="loss_of_appetite"> Loss of Appetite</label></div>
+					<div><label style="font-weight: normal;"><input type="checkbox" name="symptoms" value="abdominal_pain"> Abdominal Pain</label></div>
+					<div><label style="font-weight: normal;"><input type="checkbox" name="symptoms" value="diarrhoea"> Diarrhoea</label></div>
+					<div><label style="font-weight: normal;"><input type="checkbox" name="symptoms" value="mild_fever"> Mild Fever</label></div>
+					<div><label style="font-weight: normal;"><input type="checkbox" name="symptoms" value="yellowing_of_eyes"> Yellowing of Eyes</label></div>
+					<div><label style="font-weight: normal;"><input type="checkbox" name="symptoms" value="swelled_lymph_nodes"> Swelled Lymph Nodes</label></div>
+					<div><label style="font-weight: normal;"><input type="checkbox" name="symptoms" value="malaise"> Malaise</label></div>
+					<div><label style="font-weight: normal;"><input type="checkbox" name="symptoms" value="blurred_and_distorted_vision"> Blurred Vision</label></div>
+					<div><label style="font-weight: normal;"><input type="checkbox" name="symptoms" value="phlegm"> Phlegm</label></div>
+					<div><label style="font-weight: normal;"><input type="checkbox" name="symptoms" value="throat_irritation"> Throat Irritation</label></div>
+					<div><label style="font-weight: normal;"><input type="checkbox" name="symptoms" value="redness_of_eyes"> Redness of Eyes</label></div>
+					<div><label style="font-weight: normal;"><input type="checkbox" name="symptoms" value="sinus_pressure"> Sinus Pressure</label></div>
+					<div><label style="font-weight: normal;"><input type="checkbox" name="symptoms" value="runny_nose"> Runny Nose</label></div>
+					<div><label style="font-weight: normal;"><input type="checkbox" name="symptoms" value="congestion"> Congestion</label></div>
+					<div><label style="font-weight: normal;"><input type="checkbox" name="symptoms" value="chest_pain"> Chest Pain</label></div>
+					<div><label style="font-weight: normal;"><input type="checkbox" name="symptoms" value="fast_heart_rate"> Fast Heart Rate</label></div>
+					<div><label style="font-weight: normal;"><input type="checkbox" name="symptoms" value="excessive_hunger"> Excessive Hunger</label></div>
+					<div><label style="font-weight: normal;"><input type="checkbox" name="symptoms" value="stiff_neck"> Stiff Neck</label></div>
+					<div><label style="font-weight: normal;"><input type="checkbox" name="symptoms" value="loss_of_smell"> Loss of Smell</label></div>
+					<div><label style="font-weight: normal;"><input type="checkbox" name="symptoms" value="bladder_discomfort"> Bladder Discomfort</label></div>
+					<div><label style="font-weight: normal;"><input type="checkbox" name="symptoms" value="foul_smell_of urine"> Foul Smell of Urine</label></div>
+					<div><label style="font-weight: normal;"><input type="checkbox" name="symptoms" value="continuous_feel_of_urine"> Continuous Feel of Urine</label></div>
+					<div><label style="font-weight: normal;"><input type="checkbox" name="symptoms" value="depression"> Depression</label></div>
+					<div><label style="font-weight: normal;"><input type="checkbox" name="symptoms" value="irritability"> Irritability</label></div>
+					<div><label style="font-weight: normal;"><input type="checkbox" name="symptoms" value="muscle_pain"> Muscle Pain</label></div>
+					<div><label style="font-weight: normal;"><input type="checkbox" name="symptoms" value="red_spots_over_body"> Red Spots Over Body</label></div>
+					<div><label style="font-weight: normal;"><input type="checkbox" name="symptoms" value="dischromic _patches"> Dischromic Patches</label></div>
+					<div><label style="font-weight: normal;"><input type="checkbox" name="symptoms" value="rusty_sputum"> Rusty Sputum</label></div>
+					<div><label style="font-weight: normal;"><input type="checkbox" name="symptoms" value="visual_disturbances"> Visual Disturbances</label></div>
+					<div><label style="font-weight: normal;"><input type="checkbox" name="symptoms" value="blood_in_sputum"> Blood in Sputum</label></div>
+				</div>
+			</div>
+			<p style="margin-top: 15px;"><b>Possible Diseases:</b> Malaria, Dengue, Urinary tract infection, Fungal infection, Gastroenteritis, Heart attack, Migraine, Tuberculosis, Chicken pox, Chronic cholestasis, Jaundice, Pneumonia, Common Cold</p>
 		<br/>
 		</div class='center'>
 		<input type="submit" class="btn btn-success" value="predict" style="">

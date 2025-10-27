@@ -1,6 +1,7 @@
 from flask import Flask, render_template, url_for, request
 import pickle
 import os
+from pgmpy.inference import VariableElimination
 
 app = Flask(__name__)
 
@@ -20,8 +21,11 @@ def load_model():
 		model_data = pickle.load(f)
 
 	model = model_data['model']
-	inference = model_data['inference']
 	diseases_list = model_data['diseases_list']
+
+	# Create fresh inference engine from the loaded model
+	print("Creating inference engine...")
+	inference = VariableElimination(model)
 
 	print(f"✓ Model loaded successfully! Can predict {len(diseases_list)} diseases")
 
@@ -42,36 +46,52 @@ def predict():
 		my_Name = request.form.get('Name')
 		my_Age = request.form.get('Age')
 		my_gender = request.form.get('Gender')
-		my_symptoms = request.form.get('Symptoms')
-		list_symptoms = my_symptoms.split(', ')
+
+		# Get selected symptoms from checkboxes
+		list_symptoms = request.form.getlist('symptoms')
+
+		# If no symptoms selected, return error
+		if not list_symptoms:
+			return render_template('home.html')
 
 		# Create evidence dictionary from symptoms
 		data = {symptom: 1 for symptom in list_symptoms}
 		print(f"Received symptoms: {data}")
 
-		# Perform inference for each disease
-		max_prob = 0
-		prediction = 'Could not predict'
+		# Perform inference for each disease and collect all probabilities
+		disease_probabilities = []
 
 		for disease in diseases_list:
 			try:
 				q = inference.query([disease], evidence=data, joint=False)[disease]
 				val = q.values
-				if max_prob < val[1]:
-					prediction = disease
-					max_prob = val[1]
+				probability = val[1]  # Probability of disease being present
+				disease_probabilities.append({
+					'disease': disease,
+					'probability': probability
+				})
 			except Exception as e:
 				print(f"Error predicting {disease}: {e}")
 				continue
 
+		# Sort by probability (highest first) and get top 5
+		disease_probabilities.sort(key=lambda x: x['probability'], reverse=True)
+		top_5_diseases = disease_probabilities[:5]
+
+		# Get the most likely disease
+		prediction = top_5_diseases[0]['disease'] if top_5_diseases else 'Could not predict'
+		max_prob = top_5_diseases[0]['probability'] if top_5_diseases else 0
+
 		print(f"Predicted disease: {prediction} (probability: {max_prob:.4f})")
+		print(f"Top 5 diseases: {top_5_diseases}")
 
 		return render_template('result.html',
 							   Name=my_Name,
 							   Age=my_Age,
 							   Gender=my_gender,
 							   Symptoms=list_symptoms,
-							   Predicted_disease=prediction)
+							   Predicted_disease=prediction,
+							   Top_diseases=top_5_diseases)
 
 
 if __name__ == '__main__':

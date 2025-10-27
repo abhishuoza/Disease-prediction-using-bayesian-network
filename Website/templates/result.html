@@ -31,25 +31,58 @@
 
 
 	<div class="text-center">
-		<table style="width: 80%; border:1px solid black;margin-left:auto;margin-right:auto;">
-			<tr>
-			  <td>Name</td>
-			  <td>Age</td>
-			  <td>Gender</td>
-			  <td>Symptoms</td>
-			  <td>Disease</td>
+		<table style="width: 90%; border:1px solid black;margin-left:auto;margin-right:auto;">
+			<tr style="background-color: #4CAF50; color: white;">
+			  <th style="padding: 12px;">Name</th>
+			  <th style="padding: 12px;">Age</th>
+			  <th style="padding: 12px;">Gender</th>
+			  <th style="padding: 12px;">Primary Diagnosis</th>
 			</tr>
 			<tr>
-				<td>{{Name}}</td>
-				<td>{{Age}}</td>
-				<td>{{Gender}}</td>
-				<td>{{Symptoms}}</td>
-				<td>{{Predicted_disease}}</td>
+				<td style="padding: 10px;">{{Name}}</td>
+				<td style="padding: 10px;">{{Age}}</td>
+				<td style="padding: 10px;">{{Gender}}</td>
+				<td style="padding: 10px; font-weight: bold; color: #d9534f;">{{Predicted_disease}}</td>
 			  </tr>
 		</table>
 	</div>
 
-	<div class="text-center" style="margin-top: 30px;">
+	<div class="text-center" style="margin-top: 30px; margin-left: auto; margin-right: auto; width: 90%;">
+		<h3 style="text-align: left; color: #333; margin-bottom: 15px;">Selected Symptoms:</h3>
+		<div style="text-align: left; padding: 15px; background-color: #f9f9f9; border: 1px solid #ddd; border-radius: 5px;">
+			<ul style="columns: 3; column-gap: 20px; list-style-type: disc; padding-left: 20px;">
+				{% for symptom in Symptoms %}
+				<li style="margin-bottom: 8px;">{{ symptom.replace('_', ' ').title() }}</li>
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+
+	<div class="text-center" style="margin-top: 30px; margin-left: auto; margin-right: auto; width: 90%;">
+		<h3 style="text-align: left; color: #333; margin-bottom: 15px;">Differential Diagnosis (Top 5 Possible Diseases):</h3>
+		<table style="width: 100%; border:1px solid black;margin-left:auto;margin-right:auto;">
+			<tr style="background-color: #4CAF50; color: white;">
+			  <th style="padding: 12px; text-align: left;">Rank</th>
+			  <th style="padding: 12px; text-align: left;">Disease</th>
+			  <th style="padding: 12px; text-align: center;">Probability</th>
+			  <th style="padding: 12px; text-align: center;">Confidence</th>
+			</tr>
+			{% for disease_info in Top_diseases %}
+			<tr style="{% if loop.index == 1 %}background-color: #ffe6e6;{% endif %}">
+				<td style="padding: 10px; text-align: center; font-weight: {% if loop.index == 1 %}bold{% else %}normal{% endif %};">{{ loop.index }}</td>
+				<td style="padding: 10px; font-weight: {% if loop.index == 1 %}bold{% else %}normal{% endif %};">{{ disease_info.disease }}</td>
+				<td style="padding: 10px; text-align: center;">{{ "%.2f%%"|format(disease_info.probability * 100) }}</td>
+				<td style="padding: 10px; text-align: center;">
+					<div style="background-color: #e0e0e0; border-radius: 10px; height: 20px; width: 100%; position: relative;">
+						<div style="background-color: {% if disease_info.probability > 0.7 %}#4CAF50{% elif disease_info.probability > 0.4 %}#ff9800{% else %}#f44336{% endif %}; height: 100%; border-radius: 10px; width: {{ disease_info.probability * 100 }}%;"></div>
+					</div>
+				</td>
+			</tr>
+			{% endfor %}
+		</table>
+	</div>
+
+	<div class="text-center" style="margin-top: 30px; margin-bottom: 30px;">
 		<button onclick="window.history.back()" class="btn btn-primary" style="font-size: 18px; padding: 10px 30px;">Back to Home</button>
 	</div>
 
